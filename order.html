@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Project - Omnia India</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Back to Home Floating Button -->
+  <a href="index.html" class="floating-back-btn">&larr; Back to Home</a>
+
+  <div class="order-container">
+
+    <!-- STEP 1: SERVICE SELECTION -->
+    <div class="checkout-step active" id="step-1">
+      <h1>Start Your Project</h1>
+      <p>What can we help you build today? Choose a primary domain to get started.</p>
+
+      <div class="cards-selection-grid">
+        <label class="selection-card">
+          <input type="radio" name="service_domain" value="Web & Digital Studio" checked>
+          <div class="card-content">
+            <span class="card-icon">🌐</span>
+            <h3>Web & Digital Studio</h3>
+            <p>Websites, UI/UX, Web Apps</p>
+          </div>
+        </label>
+
+        <label class="selection-card">
+          <input type="radio" name="service_domain" value="Tech Services">
+          <div class="card-content">
+            <span class="card-icon">⚡</span>
+            <h3>Tech Services</h3>
+            <p>Setup, Scripts, Maintenance</p>
+          </div>
+        </label>
+      </div>
+
+      <button type="button" class="submit-btn" onclick="goToStep(2)">Continue to Details &rarr;</button>
+    </div>
+
+
+    <!-- STEP 2: PROJECT DETAILS & ESTIMATE -->
+    <div class="checkout-step" id="step-2">
+      <div class="step-header">
+        <button type="button" class="back-link" onclick="goToStep(1)">&larr; Back</button>
+        <a href="index.html" class="close-link">&times;</a>
+      </div>
+
+      <h1>Tell us about your project</h1>
+      <p>Fill out the details below to initiate your order.</p>
+
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="name@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone / WhatsApp Number</label>
+        <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required>
+      </div>
+
+      <div class="form-group">
+        <label for="service">Select Specific Service</label>
+        <select id="service" required>
+          <option value="">-- Select a Service --</option>
+          <option value="custom-web">Custom Web Development</option>
+          <option value="ui-ux">UI/UX & Web Design</option>
+          <option value="web-app">Web Applications & Portals</option>
+          <option value="maintenance">Maintenance & Optimization</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="budget">Project Budget Range</label>
+        <select id="budget">
+          <option value="Basic / Starter Plan">Basic / Starter Plan</option>
+          <option value="Custom Business Solution">Custom Business Solution</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="requirements">Brief Requirement</label>
+        <textarea id="requirements" rows="3" placeholder="2-3 lines of project description..."></textarea>
+      </div>
+
+      <button type="button" class="submit-btn" onclick="goToStep(3)">Proceed to Booking &rarr;</button>
+    </div>
+
+
+    <!-- STEP 3: ADVANCE BOOKING & PAYMENT -->
+    <div class="checkout-step" id="step-3">
+      <div class="step-header">
+        <button type="button" class="back-link" onclick="goToStep(2)">&larr; Back</button>
+        <a href="index.html" class="close-link">&times;</a>
+      </div>
+
+      <h1>Confirm Your Order</h1>
+      <p>Pay advance token amount to lock your slot and start work.</p>
+
+      <!-- Order Summary -->
+      <div class="order-summary-box">
+        <h4>Order Summary</h4>
+        <div class="summary-row">
+          <span>Selected Service Domain:</span>
+          <strong id="summary-service">Web & Digital Studio</strong>
+        </div>
+        <div class="summary-row">
+          <span>Estimated Time:</span>
+          <strong>3-5 Days</strong>
+        </div>
+        <div class="summary-row highlight">
+          <span>Advance Token Amount:</span>
+          <strong>₹500 / ₹1,000</strong>
+        </div>
+      </div>
+
+      <!-- Payment Section -->
+      <div class="payment-split-grid">
+        <div class="payment-card">
+          <h5>Scan QR Code</h5>
+          <div class="qr-placeholder">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=upi://pay?pa=yourname@upi&pn=OmniaIndia" alt="UPI QR">
+          </div>
+          <p class="qr-subtext">Scan via PhonePe / GPay / Paytm</p>
+        </div>
+
+        <div class="payment-card">
+          <h5>Pay via UPI / Link</h5>
+          <div class="upi-id-box">
+            <span>UPI ID:</span>
+            <code>yourname@upi</code>
+          </div>
+          <a href="#" class="gateway-btn">Pay via Gateway &rarr;</a>
+        </div>
+      </div>
+
+      <button type="button" class="submit-btn success-btn" onclick="goToStep(4)">I Have Paid / Submit Order</button>
+    </div>
+
+
+    <!-- STEP 4: ORDER CONFIRMED -->
+    <div class="checkout-step" id="step-4">
+      <div class="success-screen">
+        <div class="success-icon">&check;</div>
+        <h1>Order Received Successfully!</h1>
+        <p>Thank you! Our team will contact you on WhatsApp/Phone within 2 hours.</p>
+
+        <a href="index.html" class="submit-btn" style="text-decoration:none; display:block; text-align:center;">Back to Home Page</a>
+      </div>
+    </div>
+
+  </div>
+  
+  <!-- Minimal Order Footer -->
+  <footer class="order-footer">
+    <div class="footer-content">
+      <p>&copy; 2026 Omnia India. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Need Help?</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Simple Step Navigation Logic -->
+  <script>
+    function goToStep(stepNumber) {
+      if (stepNumber === 3) {
+        const selectedRadio = document.querySelector('input[name="service_domain"]:checked');
+        if (selectedRadio) {
+          document.getElementById('summary-service').innerText = selectedRadio.value;
+        }
+      }
+
+      const steps = document.querySelectorAll('.checkout-step');
+      steps.forEach(step => step.classList.remove('active'));
+
+      const targetStep = document.getElementById(`step-${stepNumber}`);
+      if (targetStep) {
+        targetStep.classList.add('active');
+      }
+
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>

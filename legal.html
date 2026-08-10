@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal & Policies - Omnia India</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a href="index.html" class="floating-back-btn">&larr; Back to Home</a>
+
+  <div class="legal-container">
+    <h1>Legal & Policy Center</h1>
+    <p class="legal-subtitle">Effective Date: August 2026 | Omnia India</p>
+
+    <div class="legal-layout">
+      <!-- Left Sidebar Navigation Tabs -->
+      <ul class="legal-tabs">
+        <li class="tab-item active" onclick="showPolicy('terms', this)">1. Terms & Conditions</li>
+        <li class="tab-item" onclick="showPolicy('privacy', this)">2. Privacy Policy</li>
+        <li class="tab-item" onclick="showPolicy('refund', this)">3. Refund & Cancellation</li>
+        <li class="tab-item" onclick="showPolicy('dispute', this)">4. Support & Disputes</li>
+      </ul>
+
+      <!-- Right Content Box -->
+      <div class="legal-content">
+
+        <!-- SECTION 1: TERMS & CONDITIONS -->
+        <div id="terms" class="policy-section active">
+          <h2>Terms & Conditions</h2>
+          <p>Welcome to Omnia India. By accessing our services, placing an order, or initiating a project with us, you agree to comply with and be bound by the following terms.</p>
+
+          <h3>1. Scope of Work & Deliverables</h3>
+          <p>All service deliverables, timelines, and project milestones will be defined at the start of the project. Any additional features or modifications requested beyond the agreed-upon brief will be treated as extra work and charged separately.</p>
+
+          <h3>2. Payment Terms & Advance Booking</h3>
+          <p>Work on any project begins only after the successful payment of the advance booking token amount (as specified during checkout). The remaining balance must be cleared upon final project review before source files or live domain access are handed over.</p>
+
+          <h3>3. Intellectual Property Rights</h3>
+          <p>Upon full and final payment, the client receives full ownership rights to the final custom website code and design. Omnia India retains the right to display the completed project in its portfolio and promotional materials unless a Non-Disclosure Agreement (NDA) is explicitly signed.</p>
+
+          <h3>4. Client Content & Assets</h3>
+          <p>The client is responsible for providing all necessary text, images, brand logos, and media files required for project completion. Omnia India is not liable for any copyright issues arising from content provided by the client.</p>
+        </div>
+
+        <!-- SECTION 2: PRIVACY POLICY -->
+        <div id="privacy" class="policy-section">
+          <h2>Privacy Policy</h2>
+          <p>At Omnia India, we respect your privacy and are committed to protecting the personal information you share with us.</p>
+
+          <h3>1. Information We Collect</h3>
+          <p>When you fill out our order or contact forms, we collect basic details including your Full Name, Email Address, Phone/WhatsApp Number, and Project Requirements.</p>
+
+          <h3>2. How We Use Your Data</h3>
+          <p>We use your information strictly for project communication, order verification, support, and invoicing. We do not sell, rent, or trade your personal data to third-party marketing companies.</p>
+
+          <h3>3. Data Security</h3>
+          <p>Your details are handled with standard security practices. Payment transactions (UPI/Gateways) are processed securely through certified payment channels, and we do not store your banking credentials or passwords on our servers.</p>
+        </div>
+
+        <!-- SECTION 3: REFUND & CANCELLATION -->
+        <div id="refund" class="policy-section">
+          <h2>Refund & Cancellation Policy</h2>
+
+          <h3>1. Advance Token Refunds</h3>
+          <p>The advance booking token amount is used to reserve team resources and server setup. If a cancellation is requested within 24 hours of payment and before initial project work has commenced, a full refund will be issued.</p>
+
+          <h3>2. In-Progress Project Cancellation</h3>
+          <p>If a project is cancelled after design/development work has already started, the advance token amount becomes non-refundable to cover resource costs incurred up to that point.</p>
+
+          <h3>3. Revision Policy</h3>
+          <p>We offer specified design revisions as agreed upon during project setup. Further modifications beyond the revision limit will be billed as additional maintenance hours.</p>
+        </div>
+
+        <!-- SECTION 4: DISPUTES & SUPPORT -->
+        <div id="dispute" class="policy-section">
+          <h2>Support & Dispute Resolution</h2>
+          <p>If you have any questions, concerns, or legal inquiries regarding our policies or services, please feel free to reach out directly:</p>
+
+          <ul>
+            <li><strong>Email:</strong> omxindia01@gmail.com</li>
+            <li><strong>Response Time:</strong> Within 24-48 business hours</li>
+            <li><strong>Jurisdiction:</strong> All legal matters are subject to local jurisdiction in Madhya Pradesh, India.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showPolicy(policyId, element) {
+      document.querySelectorAll('.policy-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
+
+      document.getElementById(policyId).classList.add('active');
+      element.classList.add('active');
+    }
+  </script>
+</body>
+</html>
