@@ -64,7 +64,7 @@
 
       <div class="form-group">
         <label for="phone">Phone / WhatsApp Number</label>
-        <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required>
+        <input type="tel" id="phone" placeholder="+91" required>
       </div>
 
       <div class="form-group">
@@ -94,11 +94,10 @@
       <button type="button" class="submit-btn" onclick="goToStep(3)">Proceed to Booking &rarr;</button>
     </div>
 
-
     <!-- STEP 3: ADVANCE BOOKING & PAYMENT -->
     <div class="checkout-step" id="step-3">
       <div class="step-header">
-        <button type="button" class="back-link" onclick="goToStep(2)">&larr; Back</button>
+       <button type="button" class="submit-btn" onclick="validateAndGoToStep3()">Proceed to Booking &rarr;</button>
         <a href="index.html" class="close-link">&times;</a>
       </div>
 
@@ -127,7 +126,7 @@
         <div class="payment-card">
           <h5>Scan QR Code</h5>
           <div class="qr-placeholder">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=upi://pay?pa=yourname@upi&pn=OmniaIndia" alt="UPI QR">
+            <img src="upi-qr.jpg.jpeg" alt="Omnia India UPI QR">
           </div>
           <p class="qr-subtext">Scan via PhonePe / GPay / Paytm</p>
         </div>
@@ -136,15 +135,17 @@
           <h5>Pay via UPI / Link</h5>
           <div class="upi-id-box">
             <span>UPI ID:</span>
-            <code>yourname@upi</code>
+            <code>omxindia01@upi</code>
           </div>
           <a href="#" class="gateway-btn">Pay via Gateway &rarr;</a>
         </div>
       </div>
 
-      <button type="button" class="submit-btn success-btn" onclick="goToStep(4)">I Have Paid / Submit Order</button>
+      <!-- Button to trigger JavaScript WhatsApp Redirect -->
+      <button type="button" class="submit-btn success-btn" onclick="submitOrderToWhatsApp()">
+        I Have Paid / Submit Order &rarr;
+      </button>
     </div>
-
 
     <!-- STEP 4: ORDER CONFIRMED -->
     <div class="checkout-step" id="step-4">
@@ -164,33 +165,80 @@
     <div class="footer-content">
       <p>&copy; 2026 Omnia India. All rights reserved.</p>
       <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms & Conditions</a>
+        <a href="legal.html">Privacy Policy</a>
+        <a href="legal.html">Terms & Conditions</a>
         <a href="#">Need Help?</a>
       </div>
     </div>
   </footer>
 
-  <!-- Simple Step Navigation Logic -->
+  <!-- Simple Step Navigation & WhatsApp Logic -->
+  <!-- Simple Step Navigation & WhatsApp Logic -->
   <script>
-    function goToStep(stepNumber) {
-      if (stepNumber === 3) {
-        const selectedRadio = document.querySelector('input[name="service_domain"]:checked');
-        if (selectedRadio) {
-          document.getElementById('summary-service').innerText = selectedRadio.value;
-        }
+  function goToStep(stepNumber) {
+    if (stepNumber === 3) {
+      const selectedRadio = document.querySelector('input[name="service_domain"]:checked');
+      if (selectedRadio) {
+        document.getElementById('summary-service').innerText = selectedRadio.value;
       }
-
-      const steps = document.querySelectorAll('.checkout-step');
-      steps.forEach(step => step.classList.remove('active'));
-
-      const targetStep = document.getElementById(`step-${stepNumber}`);
-      if (targetStep) {
-        targetStep.classList.add('active');
-      }
-
-      window.scrollTo(0, 0);
     }
-  </script>
+
+    const steps = document.querySelectorAll('.checkout-step');
+    steps.forEach(step => step.classList.remove('active'));
+
+    const targetStep = document.getElementById(`step-${stepNumber}`);
+    if (targetStep) {
+      targetStep.classList.add('active');
+    }
+
+    window.scrollTo(0, 0);
+  }
+
+  async function submitOrderToWhatsApp() {
+    const name = document.getElementById('name').value || 'N/A';
+    const email = document.getElementById('email').value || 'N/A';
+    const phone = document.getElementById('phone').value || 'N/A';
+    const service = document.getElementById('service').value || 'N/A';
+    const budget = document.getElementById('budget').value || 'N/A';
+    const requirements = document.getElementById('requirements').value || 'N/A';
+    
+    const domainRadio = document.querySelector('input[name="service_domain"]:checked');
+    const domain = domainRadio ? domainRadio.value : 'Web & Digital Studio';
+
+    const orderData = {
+      name,
+      email,
+      phone,
+      domain,
+      service,
+      budget,
+      requirements,
+      advanceAmount: "₹500"
+    };
+
+    try {
+      // Backend Node.js Server ko request bhejna
+      const response = await fetch('http://localhost:3000/send-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(orderData)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert("Order successfully submitted!");
+        goToStep(4);
+      } else {
+        alert("Server Error: Message nahi bheja ja saka.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Server connect nahi ho pa raha hai. Kripya check karein Node server chal raha hai ya nahi.");
+    }
+  }
+</script>
 </body>
 </html>
