@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'omxindia01@gmail.com',     // Aapka Gmail
-    pass: 'omxindia@8114'    // App Password
+    pass: 'dbtybhjyvdgmnttj'    // App Password
   }
 });
 
