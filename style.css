@@ -1457,3 +1457,44 @@ section {
   color: #03c8ff; /* टेक्स्ट का रंग गहरा नीला ताकि वो दिखे */
   padding-left: 25px; /* हल्का सा दाईं ओर खिसकेगा, ये "पानी" जैसा मूवमेंट देगा */
 }
+/* ==========================================
+   ONLY FOR MOBILE SCREENS (Desktop Par No Effect)
+   ========================================== */
+@media (max-width: 768px) {
+  
+  /* 1. Mobile top bar ko stacked (vertical) banao */
+  .top-bar {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 12px 10px !important;
+    gap: 8px !important;
+  }
+
+  /* 2. Logo size for Mobile */
+  .logo a {
+    font-size: 26px !important;
+  }
+  .logo sub {
+    font-size: 11px !important;
+  }
+
+  /* 3. Actions (Store & Login) in one line below Logo */
+  .top-actions {
+    display: flex !important;
+    gap: 20px !important;
+    margin: 4px 0 !important;
+  }
+
+  /* 4. Search Box full width below Actions */
+  .search-box {
+    width: 90% !important;
+    max-width: 100% !important;
+    margin: 6px 0 !important;
+  }
+
+  .search-box input {
+    width: 100% !important;
+    font-size: 16px !important; /* Mobile auto-zoom protection */
+  }
+}
