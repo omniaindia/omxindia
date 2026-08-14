@@ -3,20 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OMNIA Navigation Bar</title>
 
-
-  <!-- CSS File Link -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Font Awesome Icons & CSS File Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,14 +14,12 @@
   <!-- Main Navigation Header Container -->
   <header class="header-container">
     
-    <!-- ==========================================
-         TOP ROW: Logo, Search Bar, Store & Login
-         ========================================== -->
+    <!-- TOP ROW: Logo, Search Bar, Store & Login -->
     <div class="top-bar">
       
       <!-- Logo Section -->
       <div class="logo">
-       <a href="#">OMX<sub>Omnia india</sub></a>
+        <a href="#">OMX<sub>Omnia india</sub></a>
       </div>
 
       <!-- Search Input Box Section -->
@@ -44,17 +32,15 @@
         <!-- Store / Cart Button -->
         <a href="#" class="action-item">
           <span>Store</span>
-          <!-- Option B: Cart Icon -->
-
-          <span ><i class="fa-solid fa-store"></i></span>
+          <span><i class="fa-solid fa-store"></i></span>
         </a>
 
         <!-- Login Button -->
-  <a href="#" class="action-item">
-  <span>Login</span>
-  <i class="fa-solid fa-circle-user"></i>
-  <span class="icon"></span>
-</a>
+        <a href="#" class="action-item">
+          <span>Login</span>
+          <i class="fa-solid fa-circle-user"></i>
+          <span class="icon"></span>
+        </a>
       </div>
 
     </div> <!-- End of Top Row -->
@@ -62,224 +48,177 @@
     <!-- Horizontal Divider Line -->
     <hr class="nav-divider">
 
-    <!-- ==========================================
-         BOTTOM ROW: Main Navigation Links
-         ========================================== -->
+    <!-- BOTTOM ROW: Main Navigation Links -->
     <nav class="bottom-nav">
-  <!-- 3-Line Hamburger Button (Left Side) -->
-  <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </button>
+      <!-- 3-Line Hamburger Button (Left Side) -->
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
 
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <!-- <li><a href="#">Web Studio</a></li> -->
-    <li><a href="#">Tech Visual Lab</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="#">Contact Us</a></li>
-  </ul>
-</nav>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="#">Tech Visual Lab</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
 
-<!-- ================= 3-Line Menu Drawer (Popup) ================= -->
-<div class="menu-drawer" id="menuDrawer">
-  <div class="drawer-header">
-    <span>Account & Navigation</span>
-    <button class="close-btn" id="closeBtn">&times;</button>
-  </div>
-  <ul class="drawer-links">
-   
-    <li><a href="index.html">🏠 Home</a></li>
-    <li><a href="#settings">⚙️ Settings</a></li>
-     <li><a href="#login-signup">🔑 Signup / Login</a></li>
-    <li><a href="#support">💬 Help & Support</a></li>
-  </ul>
-</div>
+    <!-- 3-Line Menu Drawer (Popup) -->
+    <div class="menu-drawer" id="menuDrawer">
+      <div class="drawer-header">
+        <span>Account & Navigation</span>
+        <button class="close-btn" id="closeBtn">&times;</button>
+      </div>
+      <ul class="drawer-links">
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="#settings">⚙️ Settings</a></li>
+        <li><a href="#login-signup">🔑 Signup / Login</a></li>
+        <li><a href="#support">💬 Help & Support</a></li>
+      </ul>
+    </div>
 
-<!-- बैकग्राउंड को धुंधला/डार्क करने के लिए Overlay -->
-<div class="overlay" id="overlay"></div><!-- End of Bottom Row -->
+    <!-- Background Overlay -->
+    <div class="overlay" id="overlay"></div>
   </header>
 
-    <!-- ==========================================
-     HERO SECTION
-     ========================================== -->
-<section class="hero-section">
-  
-  <!-- Main Headline -->
-  <h1 class="hero-title">
-    "Building Next-Gen Web Experiences & Intelligent Systems"
-  </h1>
-
-  <!-- Sub-Text -->
-  <p class="hero-subtitle">
-    "Choose your area of interest to explore our <strong>services</strong>."
-  </p>
-
-  <!-- Buttons Container -->
-  <div class="hero-buttons">
-    <!-- Button 1: Web & Digital -->
-     
-    <a href="web-digital.html" class="hero-btn primary-btn">Web & Digital</a>
-    
-    <!-- Button 2: TECH -->
-    <a href="#" class="hero-btn secondary-btn">TECH</a>
-
-   
-
-  </div>
-
-</section>
-<!-- ==========================================
-     CTA (CALL TO ACTION) SECTION
-     ========================================== -->
-<section class="cta-section">
-
-  <!-- 1. Features / Trust Badges (Emojis with Text) -->
-  <div class="cta-features">
-    
-    <div class="feature-item">
-      <span class="feature-icon">🔒</span>
-      <span>100% Secure & Confidential</span>
-    </div>
-
-    <div class="feature-item">
-      <span class="feature-icon">⚡</span>
-      <span>Fast & Reliable Delivery</span>
-    </div>
-
-    <div class="feature-item">
-      <span class="feature-icon">🛡️</span>
-      <span>Quality Assured</span>
-    </div>
-
-  </div> <!-- End of Features -->
-
-
-  <!-- 2. Highlighted Offer Badge (Yellow Highlight) -->
-  <div class="cta-offer-badge">
-    Free PenDrive Delivery on Premium Projects
-  </div>
-</section>
-<!-- ==========================================
-     FOOTER SECTION
-     ========================================== -->
-<footer class="site-footer">
-  
-  <!-- Top 5 Columns Links -->
-  <div class="footer-top">
-    
-    <!-- Column 1 -->
-    <div class="footer-col">
-      <h3>About omnia India</h3>
-      <ul>
-        <li><a href="#">About us</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Careers [Hiring Soon]</a></li>
-        <li><a href="#">legal</a></li>
-      </ul>
-    </div>
-
-    <!-- Column 2 -->
-    <div class="footer-col">
-      <h3>Support</h3>
-      <ul>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="#">Refund & Policy</a></li>
-        <li><a href="#">Licensing / Terms of Use</a></li>
-      </ul>
-    </div>
-
-    <!-- Column 3 -->
-    <div class="footer-col">
-      <h3>Resources</h3>
-      <ul>
-        <li><a href="articles.html">Articles</a></li>
-        <li><a href="#">Licensing Information</a></li>
-        <li><a href="#">Free Downloads</a></li>
-        <li><a href="#">How-To Guides</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Case Studies</a></li>
-      </ul>
-    </div>
-
-    <!-- Column 4 -->
-    <div class="footer-col">
-      <h3>Accounts</h3>
-      <ul>
-        <li><a href="#">Log In / Register</a></li>
-        <li><a href="#">My Account</a></li>
-        <li><a href="#">My Downloads</a></li>
-        <li><a href="#">Order History</a></li>
-      </ul>
-    </div>
-
-    <!-- Column 5 -->
-    <div class="footer-col">
-      <h3>Shopping</h3>
-      <ul>
-        <li><a href="#">Browse All Visuals</a></li>
-        <li><a href="#">Service Packages</a></li>
-        <li><a href="#">Best Sellers</a></li>
-        <li><a href="#">New Arrivals</a></li>
-        <li><a href="#">Pricing Plans</a></li>
-      </ul>
-    </div>
-
-  </div> <!-- End Footer Top -->
-
-
-  <!-- Middle Branding & Social Icons -->
-  <div class="footer-middle">
-    <div class="footer-brand">
-      <h2>OMX</h2>
-      <span>OMNIA INDIA</span>
-    </div>
-
-    <!-- Social Links (Without Box Container & Without TikTok) -->
-    <div class="footer-socials">
-  <!-- Facebook -->
-  <a href="https://www.facebook.com/blank" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-    <i class="fa-brands fa-facebook"></i>
-  </a>
-
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/@omxindia" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-    <i class="fa-brands fa-instagram"></i>
-  </a>
-
-  <!-- YouTube -->
-  <a href="https://www.youtube.com/@omxindia" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-    <i class="fa-brands fa-youtube"></i>
-  </a>
-</div>
-  </div>
-
-
-  <!-- Divider Line -->
-  <hr class="footer-divider">
-
-
-  <!-- Bottom Legal & Notes -->
-  <div class="footer-bottom">
-    <div class="optout-link">
-      <a href="#">Do not sell my personal information</a>
-    </div>
-
-    <p class="copyright-text">
-      © 2026 <strong>Omnia India</strong>. All Rights Reserved.<br>
-    Designed & Developed by Piyush Lakhera | 
-      <a href="#">Privacy Policy</a> | 
-      <a href="#">Terms of Service</a> | 
-      <a href="#">Cookie Policy</a>
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <h1 class="hero-title">
+      "Building Next-Gen Web Experiences & Intelligent Systems"
+    </h1>
+    <p class="hero-subtitle">
+      "Choose your area of interest to explore our <strong>services</strong>."
     </p>
 
-    <p class="footer-note">
-      <strong>Note:</strong> Prices and service availability are subject to change without prior notice. All payments are processed securely.
-    </p>
-  </div>
-</footer>
-<!-- overlay ke neeche ye script daal dein -->
+    <div class="hero-buttons">
+      <a href="web-digital.html" class="hero-btn primary-btn">Web & Digital</a>
+      <a href="#" class="hero-btn secondary-btn">TECH</a>
+    </div>
+  </section>
+
+  <!-- CTA (CALL TO ACTION) SECTION -->
+  <section class="cta-section">
+    <div class="cta-features">
+      <div class="feature-item">
+        <span class="feature-icon">🔒</span>
+        <span>100% Secure & Confidential</span>
+      </div>
+
+      <div class="feature-item">
+        <span class="feature-icon">⚡</span>
+        <span>Fast & Reliable Delivery</span>
+      </div>
+
+      <div class="feature-item">
+        <span class="feature-icon">🛡️</span>
+        <span>Quality Assured</span>
+      </div>
+    </div>
+
+    <div class="cta-offer-badge">
+      Free PenDrive Delivery on Premium Projects
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-col">
+        <h3>About omnia India</h3>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Careers [Hiring Soon]</a></li>
+          <li><a href="#">legal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="#">Refund & Policy</a></li>
+          <li><a href="#">Licensing / Terms of Use</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="#">Licensing Information</a></li>
+          <li><a href="#">Free Downloads</a></li>
+          <li><a href="#">How-To Guides</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Case Studies</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Accounts</h3>
+        <ul>
+          <li><a href="#">Log In / Register</a></li>
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">My Downloads</a></li>
+          <li><a href="#">Order History</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Shopping</h3>
+        <ul>
+          <li><a href="#">Browse All Visuals</a></li>
+          <li><a href="#">Service Packages</a></li>
+          <li><a href="#">Best Sellers</a></li>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Pricing Plans</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-middle">
+      <div class="footer-brand">
+        <h2>OMX</h2>
+        <span>OMNIA INDIA</span>
+      </div>
+
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/blank" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/@omxindia" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@omxindia" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+
+    <hr class="footer-divider">
+
+    <div class="footer-bottom">
+      <div class="optout-link">
+        <a href="#">Do not sell my personal information</a>
+      </div>
+
+      <p class="copyright-text">
+        © 2026 <strong>Omnia India</strong>. All Rights Reserved.<br>
+        Designed & Developed by Piyush Lakhera | 
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Cookie Policy</a>
+      </p>
+
+      <p class="footer-note">
+        <strong>Note:</strong> Prices and service availability are subject to change without prior notice. All payments are processed securely.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Drawer Script -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const menuBtn = document.getElementById('menuBtn');
