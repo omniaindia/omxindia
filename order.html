@@ -5,11 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order Project - Omnia India</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Extra minimal CSS for lock/unlock states & test pass input -->
+  <style>
+    /* Locked state styling */
+    .btn-disabled {
+      opacity: 0.5 !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+    }
+    
+    .scan-status-msg {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #e63946;
+      text-align: center;
+    }
+
+    .scan-status-msg.unlocked {
+      color: #2a9d8f;
+    }
+
+    /* Testing Password Box */
+    .test-bypass-box {
+      margin-top: 15px;
+      padding: 10px;
+      background: #f8f9fa;
+      border: 1px dashed #ccc;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .test-bypass-box input {
+      width: 100px;
+      padding: 5px;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-right: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .test-bypass-box button {
+      padding: 5px 10px;
+      font-size: 0.85rem;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .qr-placeholder img {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .qr-placeholder img:hover {
+      transform: scale(1.02);
+    }
+  </style>
 </head>
 <body>
 
   <!-- Back to Home Floating Button -->
-  <a href="web-digital.html" class="floating-back-btn">&larr; Back </a>
+ 
 
   <div class="order-container">
 
@@ -97,7 +157,7 @@
     <!-- STEP 3: ADVANCE BOOKING & PAYMENT -->
     <div class="checkout-step" id="step-3">
       <div class="step-header">
-       <button type="button" class="submit-btn" onclick="validateAndGoToStep3()">Proceed to Booking &rarr;</button>
+        <button type="button" class="back-link" onclick="goToStep(2)">&larr; Back</button>
         <a href="index.html" class="close-link">&times;</a>
       </div>
 
@@ -125,10 +185,20 @@
       <div class="payment-split-grid">
         <div class="payment-card">
           <h5>Scan QR Code</h5>
-          <div class="qr-placeholder">
+          <div class="qr-placeholder" onclick="simulateQRScan()">
             <img src="upi-qr.jpg.jpeg" alt="Omnia India UPI QR">
           </div>
           <p class="qr-subtext">Scan via PhonePe / GPay / Paytm</p>
+          
+          <!-- Live Scan Status Notification -->
+          <div id="scan-status" class="scan-status-msg">🔒 Please scan QR code or enter bypass pass to unlock payment</div>
+
+          <!-- Developer Testing Bypass Pass -->
+          <div class="test-bypass-box">
+            <small><strong>Testing Pass:</strong></small><br>
+            <input type="password" id="test-pass-input" placeholder="Pass">
+            <button type="button" onclick="unlockWithPass()">Unlock</button>
+          </div>
         </div>
 
         <div class="payment-card">
@@ -137,13 +207,13 @@
             <span>UPI ID:</span>
             <code>omxindia01@upi</code>
           </div>
-          <a href="#" class="gateway-btn">Pay via Gateway &rarr;</a>
+          <a href="#" id="gateway-btn" class="gateway-btn btn-disabled">Pay via Gateway &rarr;</a>
         </div>
       </div>
 
       <!-- Button to trigger JavaScript WhatsApp Redirect -->
-      <button type="button" class="submit-btn success-btn" onclick="submitOrderToWhatsApp()">
-        I Have Paid / Submit Order &rarr;
+      <button type="button" id="submit-order-btn" class="submit-btn success-btn btn-disabled" onclick="submitOrderToWhatsApp()">
+        I Have Paid &rarr;
       </button>
     </div>
 
@@ -172,73 +242,111 @@
     </div>
   </footer>
 
-  <!-- Simple Step Navigation & WhatsApp Logic -->
-  <!-- Simple Step Navigation & WhatsApp Logic -->
+  <!-- Step Navigation, Payment Lock & WhatsApp Logic -->
   <script>
-  function goToStep(stepNumber) {
-    if (stepNumber === 3) {
-      const selectedRadio = document.querySelector('input[name="service_domain"]:checked');
-      if (selectedRadio) {
-        document.getElementById('summary-service').innerText = selectedRadio.value;
+    let isPaymentUnlocked = false;
+
+    function goToStep(stepNumber) {
+      if (stepNumber === 3) {
+        const selectedRadio = document.querySelector('input[name="service_domain"]:checked');
+        if (selectedRadio) {
+          document.getElementById('summary-service').innerText = selectedRadio.value;
+        }
       }
+
+      const steps = document.querySelectorAll('.checkout-step');
+      steps.forEach(step => step.classList.remove('active'));
+
+      const targetStep = document.getElementById(`step-${stepNumber}`);
+      if (targetStep) {
+        targetStep.classList.add('active');
+      }
+
+      window.scrollTo(0, 0);
     }
 
-    const steps = document.querySelectorAll('.checkout-step');
-    steps.forEach(step => step.classList.remove('active'));
-
-    const targetStep = document.getElementById(`step-${stepNumber}`);
-    if (targetStep) {
-      targetStep.classList.add('active');
+    // Unlocks Payment Buttons
+    function unlockPaymentOptions() {
+      isPaymentUnlocked = true;
+      document.getElementById('gateway-btn').classList.remove('btn-disabled');
+      document.getElementById('submit-order-btn').classList.remove('btn-disabled');
+      
+      const statusMsg = document.getElementById('scan-status');
+      statusMsg.innerText = "✅ Scan Verified! Payment options unlocked.";
+      statusMsg.classList.add('unlocked');
     }
 
-    window.scrollTo(0, 0);
-  }
+    // Simulated QR Scan Action (Triggered on clicking QR)
+    function simulateQRScan() {
+      if (isPaymentUnlocked) return;
+      const statusMsg = document.getElementById('scan-status');
+      statusMsg.innerText = "⏳ Verifying Scan...";
+      
+      setTimeout(() => {
+        unlockPaymentOptions();
+      }, 1500);
+    }
 
-  async function submitOrderToWhatsApp() {
-    const name = document.getElementById('name').value || 'N/A';
-    const email = document.getElementById('email').value || 'N/A';
-    const phone = document.getElementById('phone').value || 'N/A';
-    const service = document.getElementById('service').value || 'N/A';
-    const budget = document.getElementById('budget').value || 'N/A';
-    const requirements = document.getElementById('requirements').value || 'N/A';
-    
-    const domainRadio = document.querySelector('input[name="service_domain"]:checked');
-    const domain = domainRadio ? domainRadio.value : 'Web & Digital Studio';
-
-    const orderData = {
-      name,
-      email,
-      phone,
-      domain,
-      service,
-      budget,
-      requirements,
-      advanceAmount: "₹500"
-    };
-
-    try {
-      // Backend Node.js Server ko request bhejna
-      const response = await fetch('http://localhost:3000/send-order', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(orderData)
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        alert("Order successfully submitted!");
-        goToStep(4);
+    // Testing Unlock via Password 8114
+    function unlockWithPass() {
+      const pass = document.getElementById('test-pass-input').value;
+      if (pass === "8114") {
+        unlockPaymentOptions();
+        alert("Testing Pass Matched! Payment Options Unlocked.");
       } else {
-        alert("Server Error: Message nahi bheja ja saka.");
+        alert("Incorrect Password! Hint:");
       }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Server connect nahi ho pa raha hai. Kripya check karein Node server chal raha hai ya nahi.");
     }
-  }
-</script>
+
+    async function submitOrderToWhatsApp() {
+      if (!isPaymentUnlocked) {
+        alert("Please scan QR code or enter testing password to proceed.");
+        return;
+      }
+
+      const name = document.getElementById('name').value || 'N/A';
+      const email = document.getElementById('email').value || 'N/A';
+      const phone = document.getElementById('phone').value || 'N/A';
+      const service = document.getElementById('service').value || 'N/A';
+      const budget = document.getElementById('budget').value || 'N/A';
+      const requirements = document.getElementById('requirements').value || 'N/A';
+      
+      const domainRadio = document.querySelector('input[name="service_domain"]:checked');
+      const domain = domainRadio ? domainRadio.value : 'Web & Digital Studio';
+
+      const orderData = {
+        name,
+        email,
+        phone,
+        domain,
+        service,
+        budget,
+        requirements,
+        advanceAmount: "₹500"
+      };
+
+      try {
+        const response = await fetch('http://localhost:3000/ihavepaid', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(orderData)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert("Order successfully submitted!");
+          goToStep(4);
+        } else {
+          alert("Server Error: Message nahi bheja ja saka.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Server connect nahi ho pa raha hai. Kripya check karein Node server chal raha hai ya nahi.");
+      }
+    }
+  </script>
 </body>
 </html>

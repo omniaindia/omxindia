@@ -66,11 +66,12 @@ body {
   width: 350px;
   padding: 8px 16px;
   background-color: transparent;
-  border: 0.5px solid #ffffff;
-  border-radius: 10px; /* Rounded corners as per image */
+  border: 1px solid #ffffff;       /* Default Clean White Border */
+  border-radius: 10px;
   color: #ffffff;
   font-size: 15px;
   outline: none;
+  transition: border-color 0.2s ease; /* Smooth hover transition */
 }
 
 /* Placeholder color inside search box */
@@ -78,10 +79,19 @@ body {
   color: #aaaaaa;
 }
 
+/* HOVER STATE: Cursor le jaane par sirf border Blue hoga */
+.search-box input:hover {
+  border-color: #2563eb;          /* Sharp Royal Blue */
+}
+
+/* FOCUS STATE: Click karke type karte waqt bhi Blue border rahega */
+.search-box input:focus {
+  border-color: #2563eb;
+}
+
 /* Top Right Actions (Store & Login Container) */
 .top-actions {
   display: flex;
- 
   border-radius: 6px;
   align-items: center;
   gap: 25px;
@@ -1309,4 +1319,122 @@ section {
 
 .read-more-btn:hover {
   color: #eb1d21; /* Red fill effect matching your brand */
+}
+
+/* =========================================================
+   3-LINE HAMBURGER & SIDE DRAWER MENU STYLES (Extra Code)
+   ========================================================= */
+
+/* 1. Hamburger Button (Placed inside bottom-nav left side) */
+.bottom-nav {
+  display: flex;
+  align-items: center;
+}
+
+.menu-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  padding: 0;
+  margin-right: 15px; /* Navbar links se gap dene ke liye */
+  flex-shrink: 0;
+}
+
+.menu-btn .bar {
+  height: 2.5px;
+  width: 100%;
+  background-color:#ffffff; /* Apne navbar text color ke hisab se badal sakte hain */
+  border-radius: 2px;
+}
+
+/* 2. Side Drawer (Click hone par hi khulega) */
+.menu-drawer {
+  position: fixed;
+  top: 0;
+  left: -280px; /* Hidden by default off-screen */
+  width: 260px;
+  height: 100vh;
+  background-color:#0f172a;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  color: #fefdfd;
+}
+
+/* Jab JS dwara 'active' class add hogi tab khulega */
+.menu-drawer.active {
+  left: 0;
+}
+
+/* Drawer Header */
+.drawer-header {
+  padding: 16px 20px;
+  background-color: #1e293b;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.close-btn {
+  background:none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Drawer Links */
+.drawer-links {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.drawer-links li a {
+  display: block;
+  padding: 12px 20px;
+  color: #334155;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 1px solid #1e293b
+}
+
+/* Background Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 9998;
+}
+
+.overlay.active {
+  display: block;
+}
+/* --- नए Side Menu (Drawer) के लिंक्स पर 'पानी' Hover इफ़ेक्ट --- */
+.menu-drawer .drawer-links li a {
+  /* ट्रांज़िशन इसे स्मूथ बनाएगा */
+  transition: all 0.3s ease;
+}
+
+/* कर्सर ले जाने पर (Hover) इफ़ेक्ट */
+.menu-drawer .drawer-links li a:hover {
+  background-color: rgba(175, 238, 238, 0.3); /* हल्का 'पानी' (PaleTurquoise) कलर */
+  color: #03c8ff; /* टेक्स्ट का रंग गहरा नीला ताकि वो दिखे */
+  padding-left: 25px; /* हल्का सा दाईं ओर खिसकेगा, ये "पानी" जैसा मूवमेंट देगा */
 }

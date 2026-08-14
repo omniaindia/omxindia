@@ -66,14 +66,39 @@
          BOTTOM ROW: Main Navigation Links
          ========================================== -->
     <nav class="bottom-nav">
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-       <!-- <li><a href="#">Web Studio</a></li> -->
-        <li><a href="#">Tech Visual Lab</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </nav> <!-- End of Bottom Row -->
+  <!-- 3-Line Hamburger Button (Left Side) -->
+  <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <!-- <li><a href="#">Web Studio</a></li> -->
+    <li><a href="#">Tech Visual Lab</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="#">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- ================= 3-Line Menu Drawer (Popup) ================= -->
+<div class="menu-drawer" id="menuDrawer">
+  <div class="drawer-header">
+    <span>Account & Navigation</span>
+    <button class="close-btn" id="closeBtn">&times;</button>
+  </div>
+  <ul class="drawer-links">
+   
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="#settings">⚙️ Settings</a></li>
+     <li><a href="#login-signup">🔑 Signup / Login</a></li>
+    <li><a href="#support">💬 Help & Support</a></li>
+  </ul>
+</div>
+
+<!-- बैकग्राउंड को धुंधला/डार्क करने के लिए Overlay -->
+<div class="overlay" id="overlay"></div><!-- End of Bottom Row -->
   </header>
 
     <!-- ==========================================
@@ -254,5 +279,31 @@
     </p>
   </div>
 </footer>
+<!-- overlay ke neeche ye script daal dein -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const menuBtn = document.getElementById('menuBtn');
+      const menuDrawer = document.getElementById('menuDrawer');
+      const closeBtn = document.getElementById('closeBtn');
+      const overlay = document.getElementById('overlay');
+
+      if (menuBtn && menuDrawer) {
+        menuBtn.addEventListener('click', function() {
+          menuDrawer.classList.add('active');
+          if(overlay) overlay.classList.add('active');
+        });
+
+        function closeMenu() {
+          menuDrawer.classList.remove('active');
+          if(overlay) overlay.classList.remove('active');
+        }
+
+        if(closeBtn) closeBtn.addEventListener('click', closeMenu);
+        if(overlay) overlay.addEventListener('click', closeMenu);
+      } else {
+        console.error("Menu elements not found!");
+      }
+    });
+  </script>
 </body>
 </html>
