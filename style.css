@@ -1,27 +1,20 @@
 /* ==========================================
    1. GLOBAL RESET & BASE STYLES
    ========================================== */
-
-   * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Sabhi elements ki default margin/padding khatam karne ke liye */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Dark Background for the whole page */
-body {
+/* Page Protection for Mobile Overflow */
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Screen se bahar kuch nahi bhagega */
   background-color: #13242d;
   color: #ffffff;
-  min-height: 100vh; /* Puri screen height cover karne ke liye */
-  width: 100%;
+  min-height: 100vh;
 }
 
 /* ==========================================
@@ -30,11 +23,11 @@ body {
 .header-container {
   width: 100%;
   background-color: #0B0F17;
-  border-bottom: 1px solid #333333; /* Bottom outline */
+  border-bottom: 1px solid #333333;
 }
 
 /* ==========================================
-   3. TOP BAR LAYOUT (Logo, Search, Store/Login)
+   3. TOP BAR LAYOUT (Desktop Default)
    ========================================== */
 .top-bar {
   display: flex;
@@ -47,46 +40,72 @@ body {
 .logo a {
   color: #ffffff;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 32px;
   text-decoration: none;
   letter-spacing: 1px;
- 
 }
 .logo sub {
-  display: block; /* Isse text agli line me niche aa jayega */
-  font-size: 15px;  /* Text ka size chhota karne ke liye */
-  font-weight:  bold;
-  color: #cacaca;   /* Light gray color */
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  color: #cacaca;
   margin-left: 2px;
 }
 
-
-/* Search Box Input Styling */
-.search-box input {
-  width: 350px;
-  padding: 8px 16px;
-  background-color: transparent;
-  border: 1px solid #ffffff;       /* Default Clean White Border */
-  border-radius: 10px;
-  color: #ffffff;
-  font-size: 15px;
-  outline: none;
-  transition: border-color 0.2s ease; /* Smooth hover transition */
+/* Search Box Base Styling (Desktop) */
+.search-box {
+  flex: 1;
+  max-width: 350px;
+  margin: 0 15px;
 }
 
-/* Placeholder color inside search box */
+.search-box input {
+  width: 100%;                  /* Fixed 350px ki jagah 100% responsiveness */
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 16px;              /* 16px font se mobile auto-zoom rukega */
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
 .search-box input::placeholder {
   color: #aaaaaa;
 }
 
-/* HOVER STATE: Cursor le jaane par sirf border Blue hoga */
-.search-box input:hover {
-  border-color: #2563eb;          /* Sharp Royal Blue */
+.search-box input:hover,
+.search-box input:focus {
+  border-color: #2563eb;        /* Royal Blue */
 }
 
-/* FOCUS STATE: Click karke type karte waqt bhi Blue border rahega */
-.search-box input:focus {
-  border-color: #2563eb;
+
+/* ==========================================
+   4. MOBILE RESPONSIVE RULES (FIX FOR MOBILE)
+   ========================================== */
+@media (max-width: 768px) {
+  .top-bar {
+    padding: 12px 15px;         /* Mobile par padding kam ki */
+    flex-wrap: wrap;            /* Mobile par elements ko wrap hone do */
+    gap: 10px;
+  }
+
+  .logo a {
+    font-size: 26px;            /* Mobile par Logo thoda compact */
+  }
+
+  /* Search Box Ko Mobile me Logo ke NEECHE poori line me set karega */
+  .search-box {
+    order: 3;                   /* Logo/Login ke neeche aayega */
+    width: 100%;
+    max-width: 100%;
+    margin: 8px 0 0 0;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
 }
 
 /* Top Right Actions (Store & Login Container) */
