@@ -1457,44 +1457,64 @@ section {
   color: #03c8ff; /* टेक्स्ट का रंग गहरा नीला ताकि वो दिखे */
   padding-left: 25px; /* हल्का सा दाईं ओर खिसकेगा, ये "पानी" जैसा मूवमेंट देगा */
 }
-/* ==========================================
-   ONLY FOR MOBILE SCREENS (Desktop Par No Effect)
-   ========================================== */
-@media (max-width: 768px) {
+/* ===================================================
+   ULTIMATE MOBILE RESPONSIVE FIX (High Priority)
+   =================================================== */
+@media screen and (max-width: 768px) {
   
-  /* 1. Mobile top bar ko stacked (vertical) banao */
-  .top-bar {
+  /* 1. Header Row ko Vertical Stack banao */
+  header.header-container .top-bar {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    padding: 12px 10px !important;
+    justify-content: center !important;
+    padding: 10px 12px !important;
     gap: 8px !important;
   }
 
-  /* 2. Logo size for Mobile */
-  .logo a {
-    font-size: 26px !important;
+  /* 2. Logo Size Chhota karo */
+  header.header-container .logo a {
+    font-size: 24px !important; /* Text bada hone se roka */
+    line-height: 1.1 !important;
   }
-  .logo sub {
-    font-size: 11px !important;
+  header.header-container .logo sub {
+    font-size: 10px !important;
   }
 
-  /* 3. Actions (Store & Login) in one line below Logo */
-  .top-actions {
+  /* 3. Actions (Store & Login) in Center */
+  header.header-container .top-actions {
     display: flex !important;
-    gap: 20px !important;
+    gap: 15px !important;
+    margin: 2px 0 !important;
+  }
+  
+  header.header-container .top-actions .action-item {
+    font-size: 12px !important; /* Chhota Font Size */
+    padding: 4px 10px !important;
+  }
+
+  /* 4. Search Box Perfect Fit & Compact Size */
+  header.header-container .search-box {
+    width: 100% !important;
+    max-width: 280px !important; /* 2px chhota & tight fitting */
     margin: 4px 0 !important;
   }
 
-  /* 4. Search Box full width below Actions */
-  .search-box {
-    width: 90% !important;
-    max-width: 100% !important;
-    margin: 6px 0 !important;
+  header.header-container .search-box input {
+    width: 100% !important;
+    padding: 6px 12px !important; /* Height/Border chhota kiya */
+    font-size: 14px !important;   /* Text size chhota */
+    border-width: 1px !important;
   }
 
-  .search-box input {
-    width: 100% !important;
-    font-size: 16px !important; /* Mobile auto-zoom protection */
+  /* 5. Hero Section Heading Font Size Fix */
+  .hero-section .hero-title {
+    font-size: 20px !important;   /* Text screen par bohot bada tha, use fit kiya */
+    line-height: 1.3 !important;
+    padding: 0 10px !important;
+  }
+
+  .hero-section .hero-subtitle {
+    font-size: 13px !important;
   }
 }
