@@ -157,12 +157,6 @@ html, body {
 }
 
 /* ==========================================
-   5. BOTTOM NAVIGATION ROW (Links)
-   ========================================== */
-/* ==========================================
-   5. BOTTOM NAVIGATION ROW (Sticky Fix)
-   ========================================== */
-/* ==========================================
    5. BOTTOM NAVIGATION ROW (Sticky Fix)
    ========================================== */
 .bottom-nav {
@@ -1034,9 +1028,9 @@ section {
   background-color: rgba(17, 24, 39, 0.85); /* Semi-transparent dark background */
   border: 1px solid #334155;
   color: #ffffff;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
+  text-decoration:aliceblue;
+  font-size: 12px;
+  font-weight: 500;
   border-radius: 30px; /* Modern pill shape */
   backdrop-filter: blur(8px); /* Smooth blur effect */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -1046,7 +1040,7 @@ section {
 .floating-back-btn:hover {
  /* background-color: #1e293b;
   border-color: #38bdf8;*/
-  color: #38bdf8;
+  color: #f5f8fa;
   transform: translateX(-3px); /* Hover par thoda left slide hamesha responsive lagega */
 }
 

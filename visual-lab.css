@@ -1,0 +1,562 @@
+/* Reset & Base Styles */
+/* ==========================================
+   1. GLOBAL RESET & BASE STYLES
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page Protection for Mobile Overflow */
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Screen se bahar kuch nahi bhagega */
+  background-color: #13242d;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* ==========================================
+   2. MAIN HEADER CONTAINER
+   ========================================== */
+.header-container {
+  width: 100%;
+  background-color: #0B0F17;
+  border-bottom: 1px solid #333333;
+  
+  /* Yeh raha aapka sticky fix */
+  position: sticky;
+  top: 0;
+  z-index: 1000; 
+}
+/* ==========================================
+   3. TOP BAR LAYOUT (Desktop Default)
+   ========================================== */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+}
+
+/* Logo Styling */
+.logo a {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 32px;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+.logo sub {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  color: #cacaca;
+  margin-left: 2px;
+}
+
+
+
+/* Top Right Actions (Store & Login Container) */
+.top-actions {
+  display: flex;
+  border-radius: 6px;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Individual Store/Login Button Styles */
+.action-item {
+  display: flex;
+  align-items: center;
+  border: 2px solid #1a2332;
+  border-radius: 20px;
+  border-width: 1px;
+  gap: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 5px 15px;
+  background-color: transparent; /* Shuruat me transparent rahega */
+  
+  /* Transition me background-color add kiya taaki color smoothly fill ho */
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  
+  cursor: pointer; /* Hover par hand icon dikhane ke liye */
+}
+
+/* Hover Effect */
+.action-item:hover {
+  background-color: #007979; /* GALTI REPLACED: 'buttn-color' ki jagah 'background-color' */
+  border-color: #007979;     /* Optional: Border ko bhi same red color kar diya */
+  color: #ffffff;
+}
+
+/* ==========================================
+   4. DIVIDER LINE
+   ========================================== */
+.nav-divider {
+  border: none;
+  border-top: 1px solid #444444; /* Line between top and bottom bar */
+  margin: 0;
+}
+
+/* ==========================================
+   5. BOTTOM NAVIGATION ROW (Sticky Fix)
+   ========================================== */
+.bottom-nav {
+  padding: 12px 30px;
+  background-color: #0B0F17; /* Background color dena zaroori hai taaki peeche ka text na dikhe */
+  position: sticky;
+  top: 0;
+  z-index: 1000;             /* Taaki baaki content iske neeche se guzre */
+  border-bottom: 1px solid #1a2332; /* Optional: Neeche ek halki line ke liye */
+}
+
+/* Unordered List Styling for Navigation Items */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px; /* Space between links */
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+  padding-bottom: 4px; /* Underline aur text ke beech thoda space */
+  transition: color 0.3s ease;
+}
+
+/* Underline Animation Line setup */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  bottom: 0;
+  left: 0;
+  border-radius: 10px;
+  background-color: #ffffff;
+  
+  /* Smooth Directional Animation Magic */
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover par Left to Right expand hoga */
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Hover par Text ka Color */
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+/* Contact Hover Wrapper */
+.contact-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Hover Card (Initially Hidden) */
+.contact-hover-card {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  background-color: #111827;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  text-align: left;
+}
+
+/* Unordered List Styling for Navigation Items */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px; /* Space between links */
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+  padding-bottom: 4px; /* Underline aur text ke beech thoda space */
+  transition: color 0.3s ease;
+}
+
+/* Underline Animation Line setup */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  bottom: 0;
+  left: 0;
+  border-radius: 10px;
+  background-color: #ffffff;
+  
+  /* Smooth Directional Animation Magic */
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover par Left to Right expand hoga */
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Hover par Text ka Color */
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+/* Contact Hover Wrapper */
+.contact-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Hover Card (Initially Hidden) */
+.contact-hover-card {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  background-color: #111827;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  text-align: left;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #0b0f17;
+  color: #f3f4f6;
+  overflow-x: hidden;
+}
+
+/* 1. TOP NAVBAR (MATCHING HOMEPAGE) */
+.top-navbar {
+  background: rgba(11, 15, 23, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px 0;
+  width: 100%;
+}
+
+.nav-container {
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 0 25px; /* Left-aligned logo matching screen */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 2.5px;
+  line-height: 1;
+}
+
+.logo-subtext {
+  font-size: 11px;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-box input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 18px;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 13px;
+  outline: none;
+}
+
+.store-btn {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* 2. SUB NAVBAR (STICKY + HAMBURGER ICON) */
+.sub-navbar {
+  background-color: #070a10;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.sub-nav-container {
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 0 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menu-icon {
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.nav-link.active, .nav-link:hover {
+  color: #38bdf8;
+}
+
+/* 3. HERO SECTION */
+.hero-section {
+  padding: 90px 20px;
+  text-align: center;
+  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.12) 0%, rgba(11, 15, 23, 1) 75%);
+}
+
+.hero-container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #38bdf8, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  font-size: 17px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: #38bdf8;
+  color: #0b0f17;
+}
+
+.btn-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* 4. FOOTER (MATCHING HOMEPAGE EXACTLY) */
+.site-footer {
+  background-color: #05080e;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 25px 0 30px 0;
+  margin-top: 80px;
+}
+
+.footer-badges {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 40px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.footer-container {
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.footer-col h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.footer-col ul li a:hover {
+  color: #ffffff;
+}
+
+.footer-middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.footer-brand h2 {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.footer-brand span {
+  font-size: 11px;
+  color: #38bdf8;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 18px;
+}
+
+.footer-socials a {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.footer-divider {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 15px 0 20px 0;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.copyright-text {
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.copyright-text a {
+  color: #94a3b8;
+  text-decoration: underline;
+}
+
+.copyright-text strong {
+  color: #ffffff;
+}
+
+.footer-note {
+  font-size: 11px;
+  color: #ffffff;
+}
