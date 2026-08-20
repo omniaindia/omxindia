@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Assets & Tech Study Hub - OMX Store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="store.css">
+</head>
+<body>
+
+  <!-- Store Section -->
+  <section class="store-section">
+    <!-- Back Button -->
+    <a href="index.html" class="back-btn">
+      &#8592; Back
+    </a>
+
+    <!-- Store Header -->
+    <div class="store-header">
+      <h1>Digital Assets & Tech Study Hub</h1>
+      <p>Premium Handwritten CS Notes, Visual Templates & Developer Resources.</p>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterStore('all', this)">All Products</button>
+      <button class="filter-btn" onclick="filterStore('notes', this)">CS Notes</button>
+      <button class="filter-btn" onclick="filterStore('visuals', this)">Visual Packs</button>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+  
+      <!-- Card 1: HTML Notes -->
+      <div class="product-card" data-category="notes">
+        <span class="badge">POPULAR</span>
+        <div class="card-img-holder">
+          <img src="html.jpg.png" alt="HTML Notes">
+        </div>
+        <div class="card-body">
+          <h3>HTML Complete Master Notes</h3>
+          <p>Semantic HTML, Forms, Media Tags, Accessibility & Best Practices.</p>
+          <div class="price-row">
+            <span class="price">&#8377;49</span>
+            <span class="original-price">&#8377;149</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-buy" onclick="buyNow('html_notes')">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: CSS Notes -->
+      <div class="product-card" data-category="notes">
+        <span class="badge">BESTSELLER</span>
+        <div class="card-img-holder">
+          <img src="css.png.png" alt="CSS Notes">
+        </div>
+        <div class="card-body">
+          <h3>CSS Complete Handwritten Notes</h3>
+          <p>Flexbox, Grid, Animations, Responsive Design & Visual Diagrams.</p>
+          <div class="price-row">
+            <span class="price">&#8377;149</span>
+            <span class="original-price">&#8377;299</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-buy" onclick="buyNow('css_notes_49')">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Preview Modal Popup -->
+  <div id="previewModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closePreview()">&times;</span>
+      <h3 id="modalTitle">Product Preview</h3>
+      <div id="modalBody">
+        <!-- Preview iframe loads here dynamically -->
+      </div>
+    </div>
+  </div>
+   
+  <!-- Full-Width Professional Footer -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-col">
+        <h3>About Omnia India</h3>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Careers [Hiring Soon]</a></li>
+          <li><a href="#">Legal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="#">Refund & Policy</a></li>
+          <li><a href="#">Licensing / Terms of Use</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="#">Licensing Information</a></li>
+          <li><a href="#">Free Downloads</a></li>
+          <li><a href="#">How-To Guides</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Case Studies</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Accounts</h3>
+        <ul>
+          <li><a href="#">Log In / Register</a></li>
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">My Downloads</a></li>
+          <li><a href="#">Order History</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Shopping</h3>
+        <ul>
+          <li><a href="#">Browse All Visuals</a></li>
+          <li><a href="#">Service Packages</a></li>
+          <li><a href="#">Best Sellers</a></li>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Pricing Plans</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-middle">
+      <div class="footer-brand">
+        <h2>OMX</h2>
+        <span>OMNIA INDIA</span>
+      </div>
+
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/blank" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/@omxindia" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@omxindia" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+
+    <hr class="footer-divider">
+
+    <div class="footer-bottom">
+      <div class="optout-link">
+        <a href="#">Do not sell my personal information</a>
+      </div>
+
+      <p class="copyright-text">
+        © 2026 <strong>Omnia India</strong>. All Rights Reserved.<br>
+        Designed & Developed by Piyush Lakhera | 
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Cookie Policy</a>
+      </p>
+    </div>
+  </footer>
+     
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="store.js"></script>
+
+</body>
+</html>

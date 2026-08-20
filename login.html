@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Direct Login | Omnia X</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #0f172a; color: #fff; padding: 1rem; }
+    .card { background: #1e293b; padding: 2rem; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #334155; }
+    
+    .nav-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+    .back-btn { background: #334155; color: #38bdf8; border: 1px solid #475569; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; text-decoration: none; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 4px; transition: 0.2s ease; }
+    .back-btn:hover { background: #0284c7; color: #fff; border-color: #0284c7; }
+    .title { font-size: 1.25rem; font-weight: 700; color: #f8fafc; }
+    
+    /* Login Type Switcher Tabs */
+    .tab-container { display: flex; gap: 10px; margin-bottom: 1.2rem; background: #0f172a; padding: 4px; border-radius: 8px; border: 1px solid #334155; }
+    .tab-btn { flex: 1; padding: 0.5rem; background: none; border: none; color: #94a3b8; font-weight: 600; cursor: pointer; border-radius: 6px; font-size: 0.85rem; }
+    .tab-btn.active { background: #0284c7; color: #fff; }
+
+    .form-group { margin-bottom: 1.2rem; }
+    label { display: block; margin-bottom: 0.4rem; font-size: 0.85rem; color: #94a3b8; }
+    input { width: 100%; padding: 0.75rem; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #fff; font-size: 1rem; }
+    input:focus { outline: 1px solid #38bdf8; }
+    
+    .submit-btn { width: 100%; padding: 0.75rem; background: #0284c7; color: #fff; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 1rem; margin-top: 0.5rem; transition: 0.2s ease; }
+    .submit-btn:hover { background: #0369a1; }
+    
+    .hidden { display: none; }
+    #msg { margin-top: 1rem; font-size: 0.85rem; text-align: center; line-height: 1.4; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="nav-header">
+      <button class="back-btn" onclick="history.back()">&larr; Back</button>
+      <h2 class="title">Direct Login</h2>
+    </div>
+
+    <!-- Login Method Selection Tabs -->
+    <div class="tab-container">
+      <button class="tab-btn active" id="emailTabBtn">Email / Gmail</button>
+      <button class="tab-btn" id="phoneTabBtn">Mobile Number</button>
+    </div>
+
+    <!-- 1. Pure Gmail Login Form -->
+    <form id="emailLoginForm">
+      <div class="form-group">
+        <label for="email">Gmail Address</label>
+        <input type="email" id="email" required placeholder="example@gmail.com" />
+      </div>
+
+      <button type="submit" class="submit-btn">Send Magic Login Link</button>
+    </form>
+
+    <!-- 2. Phone Login Form -->
+    <form id="phoneLoginForm" class="hidden">
+      <div class="form-group">
+        <label for="phone">Mobile Number (with country code)</label>
+        <input type="tel" id="phone" placeholder="phone" />
+      </div>
+
+      <button type="submit" class="submit-btn">Get OTP</button>
+    </form>
+
+    <!-- 3. OTP Verification Form -->
+    <form id="otpVerifyForm" class="hidden">
+      <div class="form-group">
+        <label for="otp">Enter 6-Digit OTP</label>
+        <input type="text" id="otp" maxlength="6" placeholder="123456" />
+      </div>
+
+      <button type="submit" class="submit-btn">Verify & Login</button>
+    </form>
+
+    <div id="msg"></div>
+  </div>
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL = "https://your-project-id.supabase.co";
+    const SUPABASE_ANON_KEY = "your-anon-key-here";
+
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // DOM Elements
+    const emailTabBtn = document.getElementById('emailTabBtn');
+    const phoneTabBtn = document.getElementById('phoneTabBtn');
+    const emailLoginForm = document.getElementById('emailLoginForm');
+    const phoneLoginForm = document.getElementById('phoneLoginForm');
+    const otpVerifyForm = document.getElementById('otpVerifyForm');
+    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+    const otpInput = document.getElementById('otp');
+    const msg = document.getElementById('msg');
+
+    let currentPhone = "";
+
+    // Tab Switching Logic
+    emailTabBtn.addEventListener('click', () => {
+      emailTabBtn.classList.add('active');
+      phoneTabBtn.classList.remove('active');
+      emailLoginForm.classList.remove('hidden');
+      phoneLoginForm.classList.add('hidden');
+      otpVerifyForm.classList.add('hidden');
+      msg.textContent = "";
+    });
+
+    phoneTabBtn.addEventListener('click', () => {
+      phoneTabBtn.classList.add('active');
+      emailTabBtn.classList.remove('active');
+      phoneLoginForm.classList.remove('hidden');
+      emailLoginForm.classList.add('hidden');
+      otpVerifyForm.classList.add('hidden');
+      msg.textContent = "";
+    });
+
+    // 1. Direct Email Magic Link Submit
+    emailLoginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = 'Sending Magic Link...';
+      msg.style.color = '#94a3b8';
+
+      const email = emailInput.value.trim();
+
+      const { error } = await _supabase.auth.signInWithOtp({
+        email: email,
+        options: {
+          emailRedirectTo: window.location.origin + '/index.html'
+        }
+      });
+
+      if (error) {
+        msg.style.color = '#f87171';
+        msg.textContent = error.message;
+      } else {
+        msg.style.color = '#4ade80';
+        msg.textContent = 'Login link sent! Please check your Gmail to complete login.';
+      }
+    });
+
+    // 2. Phone OTP Request Submit
+    phoneLoginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = 'Sending OTP...';
+      msg.style.color = '#94a3b8';
+
+      currentPhone = phoneInput.value.trim();
+
+      const { error } = await _supabase.auth.signInWithOtp({
+        phone: currentPhone
+      });
+
+      if (error) {
+        msg.style.color = '#f87171';
+        msg.textContent = error.message;
+      } else {
+        msg.style.color = '#4ade80';
+        msg.textContent = 'OTP sent on your mobile!';
+        phoneLoginForm.classList.add('hidden');
+        otpVerifyForm.classList.remove('hidden');
+      }
+    });
+
+    // 3. Verify Phone OTP
+    otpVerifyForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = 'Verifying OTP...';
+      msg.style.color = '#94a3b8';
+
+      const token = otpInput.value.trim();
+
+      const { data, error } = await _supabase.auth.verifyOtp({
+        phone: currentPhone,
+        token: token,
+        type: 'sms'
+      });
+
+      if (error) {
+        msg.style.color = '#f87171';
+        msg.textContent = error.message;
+      } else {
+        msg.style.color = '#4ade80';
+        msg.textContent = 'Login Successful! Redirecting...';
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1200);
+      }
+    });
+  </script>
+</body>
+</html>

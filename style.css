@@ -24,8 +24,12 @@ html, body {
   width: 100%;
   background-color: #0B0F17;
   border-bottom: 1px solid #333333;
+  
+  /* Yeh raha aapka sticky fix */
+  position: sticky;
+  top: 0;
+  z-index: 1000; 
 }
-
 /* ==========================================
    3. TOP BAR LAYOUT (Desktop Default)
    ========================================== */
@@ -155,8 +159,19 @@ html, body {
 /* ==========================================
    5. BOTTOM NAVIGATION ROW (Links)
    ========================================== */
+/* ==========================================
+   5. BOTTOM NAVIGATION ROW (Sticky Fix)
+   ========================================== */
+/* ==========================================
+   5. BOTTOM NAVIGATION ROW (Sticky Fix)
+   ========================================== */
 .bottom-nav {
   padding: 12px 30px;
+  background-color: #0B0F17; /* Background color dena zaroori hai taaki peeche ka text na dikhe */
+  position: sticky;
+  top: 0;
+  z-index: 1000;             /* Taaki baaki content iske neeche se guzre */
+  border-bottom: 1px solid #1a2332; /* Optional: Neeche ek halki line ke liye */
 }
 
 /* Unordered List Styling for Navigation Items */
@@ -166,8 +181,6 @@ html, body {
   gap: 30px; /* Space between links */
 }
 
-/* Navigation Links Anchor Styling */
-/* Navigation Links */
 .nav-links a {
   color: #ffffff;
   text-decoration: none;
@@ -187,8 +200,6 @@ html, body {
   left: 0;
   border-radius: 10px;
   background-color: #ffffff;
-  /* White Glow Effect */
- 
   
   /* Smooth Directional Animation Magic */
   transform: scaleX(0);
@@ -202,11 +213,11 @@ html, body {
   transform-origin: bottom left;
 }
 
-/* Hover par Text ka Color aur Glow */
+/* Hover par Text ka Color */
 .nav-links a:hover {
   color: #ffffff;
- 
 }
+
 /* Contact Hover Wrapper */
 .contact-dropdown-wrapper {
   position: relative;
@@ -229,7 +240,73 @@ html, body {
   z-index: 1000;
   text-align: left;
 }
- 
+
+/* Unordered List Styling for Navigation Items */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px; /* Space between links */
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+  padding-bottom: 4px; /* Underline aur text ke beech thoda space */
+  transition: color 0.3s ease;
+}
+
+/* Underline Animation Line setup */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  bottom: 0;
+  left: 0;
+  border-radius: 10px;
+  background-color: #ffffff;
+  
+  /* Smooth Directional Animation Magic */
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover par Left to Right expand hoga */
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Hover par Text ka Color */
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+/* Contact Hover Wrapper */
+.contact-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Hover Card (Initially Hidden) */
+.contact-hover-card {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  background-color: #111827;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  text-align: left;
+}
 /* ==========================================
    1. GLOBAL RESET & BODY STYLES
    ========================================== */
@@ -301,7 +378,7 @@ body {
   font-size: 16px;
   font-weight: 600;
   padding: 12px 28px;     /* Button ki height aur width control karne ke liye */
-  border-radius: 8px;      /* Rounded corners */
+  border-radius: 50px;      /* Rounded corners */
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -311,7 +388,7 @@ body {
 
   background-color: transparent;
   color: #fcfbfb;
-  border: 2px solid #ffffff;
+  border: 1px solid #ffffff;
 }
 
 .primary-btn:hover {
@@ -324,7 +401,7 @@ body {
 .secondary-btn {
   background-color: transparent;
   color: #ffffff;
-  border: 2px solid #ffffff;
+  border: 1px solid #ffffff;
 }
 
 .secondary-btn:hover {
@@ -599,9 +676,6 @@ body {
     text-align: center;
   }
 }
-
-
-
 /* Universal Reset for Page */
 * {
   margin: 0;
@@ -655,7 +729,7 @@ section {
 
 .btn {
   padding: 12px 26px;
-  border-radius: 6px;
+  border-radius: 50px;
   text-decoration: none;
   font-weight: bold;
   font-size: 15px;
@@ -1378,7 +1452,7 @@ section {
   left: -280px; /* Hidden by default off-screen */
   width: 260px;
   height: 100vh;
-  background-color:#0f172a;
+  background-color: #0B0F17;
   box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
   transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 9999;
@@ -1394,8 +1468,9 @@ section {
 
 /* Drawer Header */
 .drawer-header {
+  font-style: arial;
   padding: 16px 20px;
-  background-color: #1e293b;
+  background-color:  rgba(0, 0, 0, 0.15);
   color: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -1423,7 +1498,7 @@ section {
 .drawer-links li a {
   display: block;
   padding: 12px 20px;
-  color: #334155;
+  color: #f2f4f8;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 700;
@@ -1454,7 +1529,7 @@ section {
 /* कर्सर ले जाने पर (Hover) इफ़ेक्ट */
 .menu-drawer .drawer-links li a:hover {
   background-color: rgba(175, 238, 238, 0.3); /* हल्का 'पानी' (PaleTurquoise) कलर */
-  color: #03c8ff; /* टेक्स्ट का रंग गहरा नीला ताकि वो दिखे */
+  color: #eaf0f1; /* टेक्स्ट का रंग गहरा नीला ताकि वो दिखे */
   padding-left: 25px; /* हल्का सा दाईं ओर खिसकेगा, ये "पानी" जैसा मूवमेंट देगा */
 }
 /* ===================================================
@@ -1513,7 +1588,6 @@ section {
     line-height: 1.3 !important;
     padding: 0 10px !important;
   }
-
   .hero-section .hero-subtitle {
     font-size: 13px !important;
   }

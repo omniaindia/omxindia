@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Successful - OMX Store</title>
+  <link rel="stylesheet" href="store.css">
+  <style>
+    .success-card {
+      max-width: 500px;
+      margin: 80px auto;
+      background: #16213e;
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid #00f2fe;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+    }
+    .btn-download {
+      background: #00f2fe;
+      color: #000;
+      font-weight: bold;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+    .btn-download:hover {
+      background: #00c6ff;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="success-card">
+    <h1 style="color: #00f2fe; margin-bottom: 10px;">Payment Successful! 🎉</h1>
+    <p style="color: #ccc;">Aapka payment receive ho gaya hai. Niche button par click karke PDF download karein.</p>
+    
+    <!-- Direct Download Button -->
+    <button class="btn-download" onclick="downloadNote('html.pdf')">📥 Download Notes PDF</button>
+  </div>
+
+  <!-- Supabase CDN + JavaScript File -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="store.js"></script>
+
+</body>
+</html>
