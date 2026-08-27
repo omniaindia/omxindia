@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do Not Sell or Share My Personal Information | Omnia X</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #e0e0e0;
+      background-color: #0f0f12;
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    h1 {
+      color: #ffffff;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #00bcd4;
+      padding-bottom: 10px;
+    }
+    h2 {
+      color: #ffffff;
+      font-size: 1.3rem;
+      margin-top: 25px;
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+      color: #b0b0b0;
+    }
+    a {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Card Container */
+    .card {
+      background: #18181c;
+      border: 1px solid #2a2a32;
+      border-left: 4px solid #00bcd4;
+      padding: 25px;
+      margin: 25px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* Interactive Toggle Section */
+    .toggle-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #22222a;
+      padding: 15px 20px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    .status-text {
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    /* Form Inputs */
+    label {
+      font-weight: 600;
+      color: #dddddd;
+      font-size: 0.9rem;
+    }
+    input[type="email"], textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      margin-bottom: 18px;
+      background: #262630;
+      border: 1px solid #3a3a48;
+      color: #ffffff;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+    input[type="email"]:focus, textarea:focus {
+      outline: none;
+      border-color: #00bcd4;
+    }
+
+    /* Button */
+    .btn {
+      display: inline-block;
+      background: #00bcd4;
+      color: #0f0f12;
+      font-weight: 700;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+    .btn:hover {
+      background: #00acc1;
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: #333340;
+      color: #ffffff;
+    }
+    .btn-secondary:hover {
+      background: #444455;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+    .status-off { background: #d32f2f; color: #fff; }
+    .status-on { background: #388e3c; color: #fff; }
+  </style>
+</head>
+<body>
+
+  <h1>Do Not Sell or Share My Personal Information</h1>
+  <p>At <strong>Omnia X (OMX India)</strong>, we value your privacy. Under applicable consumer privacy laws (such as CCPA/CPRA), you have the right to opt out of the sale or sharing of your personal data to third parties for targeted advertising or analytics.</p>
+
+  <!-- Interactive Local Toggle -->
+  <div class="card">
+    <h2>1. Quick Cookie & Tracking Opt-Out</h2>
+    <p>Use the toggle below to store your opt-out preference directly in your browser. This will prevent non-essential tracking cookies from collecting your data on this device.</p>
+    
+    <div class="toggle-section">
+      <div>
+        <span class="status-text">Data Sharing Preference: </span>
+        <span id="optoutStatus" class="status-badge status-on">Data Sharing Allowed</span>
+      </div>
+      <button id="toggleBtn" class="btn btn-secondary" onclick="toggleOptOut()">Opt Out Now</button>
+    </div>
+  </div>
+
+  <!-- Manual Request Form -->
+  <div class="card">
+    <h2>2. Submit an Official Opt-Out Request</h2>
+    <p>If you wish to formally record your opt-out request in our internal systems, please submit your email address below or contact us at <a href="mailto:omxindia01@gmail.com">omxindia01@gmail.com</a>.</p>
+    
+    <form action="mailto:omxindia01@gmail.com" method="post" enctype="text/plain">
+      <p>
+        <label for="email">Your Registered Email Address:</label>
+        <input type="email" id="email" name="user_email" placeholder="you@example.com" required>
+      </p>
+      <p>
+        <label for="details">Request Details:</label>
+        <textarea id="details" name="request_details" rows="3">I request that Omnia X / OMX India does not sell or share my personal information with third parties.</textarea>
+      </p>
+      <button type="submit" class="btn">Submit Formal Request</button>
+    </form>
+  </div>
+
+  <h2>How We Handle Your Information</h2>
+  <p><strong>Omnia X</strong> does not sell personal information for monetary payment. However, standard web services and analytics integrations may process user data in ways classified as "sharing" under certain regulations. Submitting an opt-out request ensures your data is restricted accordingly.</p>
+
+  <p>For more information, please read our full Privacy Policy or contact our privacy team at <a href="mailto:omxindia01@gmail.com">omxindia01@gmail.com</a>.</p>
+
+  <!-- JavaScript for Interactive Toggle -->
+  <script>
+    function updateUI(isOptedOut) {
+      const statusBadge = document.getElementById('optoutStatus');
+      const toggleBtn = document.getElementById('toggleBtn');
+
+      if (isOptedOut) {
+        statusBadge.textContent = 'Opted Out (Data Sharing Blocked)';
+        statusBadge.className = 'status-badge status-off';
+        toggleBtn.textContent = 'Allow Data Sharing';
+      } else {
+        statusBadge.textContent = 'Data Sharing Allowed';
+        statusBadge.className = 'status-badge status-on';
+        toggleBtn.textContent = 'Opt Out Now';
+      }
+    }
+
+    function toggleOptOut() {
+      const current = localStorage.getItem('omniax_optout') === 'true';
+      const newState = !current;
+      localStorage.setItem('omniax_optout', newState);
+      updateUI(newState);
+    }
+
+    // Initialize state on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const isOptedOut = localStorage.getItem('omniax_optout') === 'true';
+      updateUI(isOptedOut);
+    });
+  </script>
+
+</body>
+</html>s

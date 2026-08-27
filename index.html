@@ -75,7 +75,7 @@
       </div>
       <ul class="drawer-links">
         <li><a href="index.html">🏠 Home</a></li>
-        <li><a href="#login-signup">🔑 Signup / Login</a></li>
+        <li><a href="login.html">🔑 Signup / Login</a></li>
         <li><a href="#support">💬 Help & Support</a></li>
       </ul>
     </div>
@@ -120,10 +120,10 @@
       <div class="footer-col">
         <h3>About omnia India</h3>
         <ul>
-          <li><a href="#">About us</a></li>
+          <li><a href="about.html">About us</a></li>
           <li><a href="contact.html">Contact Us</a></li>
           <li><a href="#">Careers [Hiring Soon]</a></li>
-          <li><a href="#">legal</a></li>
+          <li><a href="legal.html">legal</a></li>
         </ul>
       </div>
 
@@ -177,29 +177,35 @@
       </div>
 
       <div class="footer-socials">
-        <a href="https://www.facebook.com/blank" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <i class="fa-brands fa-facebook"></i>
-        </a>
-        <a href="https://www.instagram.com/@omxindia" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="https://www.youtube.com/@omxindia" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-      </div>
+  <a href="https://www.facebook.com/blank" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+    <i class="fa-brands fa-facebook"></i>
+  </a>
+  <a href="https://www.instagram.com/@omxindia" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+  <a href="https://www.youtube.com/@omxindia" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+    <i class="fa-brands fa-youtube"></i>
+  </a>
+  <a href="https://x.com/omxindia" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+    <i class="fa-brands fa-x-twitter"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/omxindia" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+    <i class="fa-brands fa-linkedin"></i>
+  </a>
+</div>
     </div>
 
     <hr class="footer-divider">
 
     <div class="footer-bottom">
       <div class="optout-link">
-        <a href="#">Do not sell my personal information</a>
+        <a href="do-not-sell.html">Do not sell my personal information</a>
       </div>
 
       <p class="copyright-text">
         © 2026 <strong>Omnia India</strong>. All Rights Reserved.<br>
         Designed & Developed by Piyush Lakhera | 
-        <a href="#">Privacy Policy</a> | 
+        <a href="privacy.html">Privacy Policy</a> | 
         <a href="#">Terms of Service</a> | 
         <a href="#">Cookie Policy</a>
       </p>
@@ -235,6 +241,41 @@
         console.error("Menu elements not found!");
       }
     });
-  </script>
+  
+  // Toggle between Sign In and Sign Up mode
+function toggleAuthMode(isSignIn) {
+  const title = document.querySelector('.auth-card h1');
+  const submitBtn = document.querySelector('.btn-submit');
+  
+  if (isSignIn) {
+    title.textContent = 'Sign in to Omnia X';
+    submitBtn.textContent = 'Sign In';
+  } else {
+    title.textContent = 'Join Omnia X';
+    submitBtn.textContent = 'Agree & Join';
+  }
+}
+
+function showCookieBanner() {
+    const consent = localStorage.getItem('omniax_cookie_consent');
+    if (!consent) {
+      document.getElementById('cookieBanner').style.display = 'block';
+    }
+  }
+
+  function acceptCookies() {
+    localStorage.setItem('omniax_cookie_consent', 'accepted');
+    localStorage.setItem('omniax_optout', 'false');
+    document.getElementById('cookieBanner').style.display = 'none';
+  }
+
+  function declineCookies() {
+    localStorage.setItem('omniax_cookie_consent', 'declined');
+    localStorage.setItem('omniax_optout', 'true');
+    document.getElementById('cookieBanner').style.display = 'none';
+  }
+
+  window.addEventListener('DOMContentLoaded', showCookieBanner);
+</script>
 </body>
 </html>

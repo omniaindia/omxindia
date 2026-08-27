@@ -1,196 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Direct Login | Omnia X</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Omnia X</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
-    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #0f172a; color: #fff; padding: 1rem; }
-    .card { background: #1e293b; padding: 2rem; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #334155; }
-    
-    .nav-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
-    .back-btn { background: #334155; color: #38bdf8; border: 1px solid #475569; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; text-decoration: none; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 4px; transition: 0.2s ease; }
-    .back-btn:hover { background: #0284c7; color: #fff; border-color: #0284c7; }
-    .title { font-size: 1.25rem; font-weight: 700; color: #f8fafc; }
-    
-    /* Login Type Switcher Tabs */
-    .tab-container { display: flex; gap: 10px; margin-bottom: 1.2rem; background: #0f172a; padding: 4px; border-radius: 8px; border: 1px solid #334155; }
-    .tab-btn { flex: 1; padding: 0.5rem; background: none; border: none; color: #94a3b8; font-weight: 600; cursor: pointer; border-radius: 6px; font-size: 0.85rem; }
-    .tab-btn.active { background: #0284c7; color: #fff; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
 
-    .form-group { margin-bottom: 1.2rem; }
-    label { display: block; margin-bottom: 0.4rem; font-size: 0.85rem; color: #94a3b8; }
-    input { width: 100%; padding: 0.75rem; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #fff; font-size: 1rem; }
-    input:focus { outline: 1px solid #38bdf8; }
-    
-    .submit-btn { width: 100%; padding: 0.75rem; background: #0284c7; color: #fff; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 1rem; margin-top: 0.5rem; transition: 0.2s ease; }
-    .submit-btn:hover { background: #0369a1; }
-    
-    .hidden { display: none; }
-    #msg { margin-top: 1rem; font-size: 0.85rem; text-align: center; line-height: 1.4; }
+    body {
+      background-color: #f3f2ef;
+      color: #000000e6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header Navbar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      background-color: #ffffff;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #0073b1;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #0f0f12;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header-nav a {
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .btn-signin {
+      color: #666666;
+      padding: 8px 12px;
+    }
+
+    .btn-signin:hover {
+      color: #000000;
+    }
+
+    .btn-outline {
+      color: #0073b1;
+      border: 1px solid #0073b1;
+      padding: 8px 20px;
+      border-radius: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(0, 115, 177, 0.08);
+      box-shadow: inset 0 0 0 1px #0073b1;
+    }
+
+    /* Main Section */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .auth-card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 400px;
+      padding: 32px 28px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .auth-card h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #000000e6;
+      margin-bottom: 24px;
+    }
+
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: #666666;
+      margin-bottom: 4px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #00000099;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    .input-group input:focus {
+      border-color: #0073b1;
+      box-shadow: 0 0 0 1px #0073b1;
+    }
+
+    .terms-text {
+      font-size: 0.75rem;
+      color: #666666;
+      margin: 16px 0 20px 0;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .terms-text a {
+      color: #0073b1;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .terms-text a:hover {
+      text-decoration: underline;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background-color: #0073b1;
+      color: #ffffff;
+      border: none;
+      padding: 13px;
+      border-radius: 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      background-color: #005582;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 20px 0;
+      color: #666666;
+      font-size: 0.85rem;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .divider span {
+      padding: 0 10px;
+    }
+
+    /* Google SSO Button */
+    .btn-google {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #cdcdcd;
+      padding: 10px;
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #444444;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-google:hover {
+      background-color: #f7f7f7;
+      border-color: #b0b0b0;
+    }
+
+    .btn-google img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .switch-auth {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.9rem;
+      color: #666666;
+    }
+
+    .switch-auth a {
+      color: #0073b1;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .switch-auth a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer Links */
+    footer {
+      padding: 20px 40px;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+      color: #666666;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    footer a {
+      color: #666666;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      color: #0073b1;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="nav-header">
-      <button class="back-btn" onclick="history.back()">&larr; Back</button>
-      <h2 class="title">Direct Login</h2>
+  <!-- Top Navigation Header -->
+  <header>
+    <a href="index.html" class="logo">Omnia<span>X</span></a>
+    <div class="header-nav">
+      <a href="index.html" class="btn-signin">Sign in</a>
+      <!-- <a href="#" class="btn-outline">Join now</a> -->
     </div>
+  </header>
 
-    <!-- Login Method Selection Tabs -->
-    <div class="tab-container">
-      <button class="tab-btn active" id="emailTabBtn">Email / Gmail</button>
-      <button class="tab-btn" id="phoneTabBtn">Mobile Number</button>
+  <!-- Auth Box -->
+  <main>
+    <div class="auth-card">
+      <h1>Join Omnia X</h1>
+      
+      <form action="#" method="POST">
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password (6+ characters)</label>
+          <input type="password" id="password" name="password" required minlength="6">
+        </div>
+
+        <p class="terms-text">
+          By clicking Agree & Join, you agree to the Omnia X 
+          <a href="#">User Agreement</a>, <a href="policy.html">Privacy Policy</a>, and <a href="do-not-sell.html">Cookie Policy</a>.
+        </p>
+
+        <button type="submit" class="btn-submit">Agree & Join</button>
+      </form>
+
+      <div class="divider">
+        <span>or</span>
+      </div>
+
+      <!-- Google Single Sign-On Option -->
+      <button class="btn-google">
+        <svg width="18" height="18" viewBox="0 0 18 18">
+          <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.616z"/>
+          <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/>
+          <path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/>
+          <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/>
+        </svg>
+        Continue with Google
+      </button>
+
+      <div class="switch-auth">
+        Already on Omnia X? <a href="index.html">Sign in</a>
+      </div>
     </div>
+  </main>
 
-    <!-- 1. Pure Gmail Login Form -->
-    <form id="emailLoginForm">
-      <div class="form-group">
-        <label for="email">Gmail Address</label>
-        <input type="email" id="email" required placeholder="example@gmail.com" />
-      </div>
+  <!-- Footer Links -->
+  <footer>
+    <span><strong>Omnia X</strong> © 2026</span>
+    <a href="#">User Agreement</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="do-not-sell.html">Do Not Sell My Info</a>
+    <a href="#">Cookie Policy</a>
+    <a href="#">Help Center</a>
+  </footer>
 
-      <button type="submit" class="submit-btn">Send Magic Login Link</button>
-    </form>
-
-    <!-- 2. Phone Login Form -->
-    <form id="phoneLoginForm" class="hidden">
-      <div class="form-group">
-        <label for="phone">Mobile Number (with country code)</label>
-        <input type="tel" id="phone" placeholder="phone" />
-      </div>
-
-      <button type="submit" class="submit-btn">Get OTP</button>
-    </form>
-
-    <!-- 3. OTP Verification Form -->
-    <form id="otpVerifyForm" class="hidden">
-      <div class="form-group">
-        <label for="otp">Enter 6-Digit OTP</label>
-        <input type="text" id="otp" maxlength="6" placeholder="123456" />
-      </div>
-
-      <button type="submit" class="submit-btn">Verify & Login</button>
-    </form>
-
-    <div id="msg"></div>
-  </div>
-
-  <!-- Supabase CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <script>
-    const SUPABASE_URL = "https://your-project-id.supabase.co";
-    const SUPABASE_ANON_KEY = "your-anon-key-here";
-
-    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    // DOM Elements
-    const emailTabBtn = document.getElementById('emailTabBtn');
-    const phoneTabBtn = document.getElementById('phoneTabBtn');
-    const emailLoginForm = document.getElementById('emailLoginForm');
-    const phoneLoginForm = document.getElementById('phoneLoginForm');
-    const otpVerifyForm = document.getElementById('otpVerifyForm');
-    const emailInput = document.getElementById('email');
-    const phoneInput = document.getElementById('phone');
-    const otpInput = document.getElementById('otp');
-    const msg = document.getElementById('msg');
-
-    let currentPhone = "";
-
-    // Tab Switching Logic
-    emailTabBtn.addEventListener('click', () => {
-      emailTabBtn.classList.add('active');
-      phoneTabBtn.classList.remove('active');
-      emailLoginForm.classList.remove('hidden');
-      phoneLoginForm.classList.add('hidden');
-      otpVerifyForm.classList.add('hidden');
-      msg.textContent = "";
-    });
-
-    phoneTabBtn.addEventListener('click', () => {
-      phoneTabBtn.classList.add('active');
-      emailTabBtn.classList.remove('active');
-      phoneLoginForm.classList.remove('hidden');
-      emailLoginForm.classList.add('hidden');
-      otpVerifyForm.classList.add('hidden');
-      msg.textContent = "";
-    });
-
-    // 1. Direct Email Magic Link Submit
-    emailLoginForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      msg.textContent = 'Sending Magic Link...';
-      msg.style.color = '#94a3b8';
-
-      const email = emailInput.value.trim();
-
-      const { error } = await _supabase.auth.signInWithOtp({
-        email: email,
-        options: {
-          emailRedirectTo: window.location.origin + '/index.html'
-        }
-      });
-
-      if (error) {
-        msg.style.color = '#f87171';
-        msg.textContent = error.message;
-      } else {
-        msg.style.color = '#4ade80';
-        msg.textContent = 'Login link sent! Please check your Gmail to complete login.';
-      }
-    });
-
-    // 2. Phone OTP Request Submit
-    phoneLoginForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      msg.textContent = 'Sending OTP...';
-      msg.style.color = '#94a3b8';
-
-      currentPhone = phoneInput.value.trim();
-
-      const { error } = await _supabase.auth.signInWithOtp({
-        phone: currentPhone
-      });
-
-      if (error) {
-        msg.style.color = '#f87171';
-        msg.textContent = error.message;
-      } else {
-        msg.style.color = '#4ade80';
-        msg.textContent = 'OTP sent on your mobile!';
-        phoneLoginForm.classList.add('hidden');
-        otpVerifyForm.classList.remove('hidden');
-      }
-    });
-
-    // 3. Verify Phone OTP
-    otpVerifyForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      msg.textContent = 'Verifying OTP...';
-      msg.style.color = '#94a3b8';
-
-      const token = otpInput.value.trim();
-
-      const { data, error } = await _supabase.auth.verifyOtp({
-        phone: currentPhone,
-        token: token,
-        type: 'sms'
-      });
-
-      if (error) {
-        msg.style.color = '#f87171';
-        msg.textContent = error.message;
-      } else {
-        msg.style.color = '#4ade80';
-        msg.textContent = 'Login Successful! Redirecting...';
-        setTimeout(() => {
-          window.location.href = 'index.html';
-        }, 1200);
-      }
-    });
-  </script>
 </body>
 </html>

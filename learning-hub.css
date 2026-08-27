@@ -1,0 +1,10 @@
+.watch-btn { display: inline-block; margin-top: 10px; color: #ff3366; text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+.watch-btn:hover { text-decoration: underline; }
+.learning-hub { padding: 60px 20px; background-color: #0a0a0a; color: #fff; }
+.learning-hub h2 { font-size: 2.5rem; margin-bottom: 10px; }
+.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+.video-card { background: #1a1a1a; padding: 20px; border-radius: 12px; transition: 0.3s; }
+.video-card:hover { transform: translateY(-5px); border: 1px solid #333; }
+.video-placeholder { width: 100%; height: 180px; background: #333; border-radius: 8px; margin-bottom: 15px; }
+.video-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.video-card p { font-size: 0.9rem; color: #aaa; }
