@@ -1,3 +1,7 @@
+body{
+  margin:0;
+  padding:0;
+}
 /* ==========================================
    1. GLOBAL RESET & BASE STYLES
    ========================================== */
@@ -22,7 +26,7 @@ html, body {
    ========================================== */
 .header-container {
   width: 100%;
-  background-color: #0B0F17;
+  background-color: #0b0b0f;
   border-bottom: 1px solid #333333;
   
   /* Yeh raha aapka sticky fix */
@@ -41,19 +45,19 @@ html, body {
 }
 
 /* Logo Styling */
-.logo a {
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 32px;
-  text-decoration: none;
-  letter-spacing: 1px;
+.nav-brand {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  top:0;
+  left:0;
+  z-index: 1000;
 }
-.logo sub {
-  display: block;
-  font-size: 13px;
-  font-weight: bold;
-  color: #cacaca;
-  margin-left: 2px;
+.logo-img{
+  height: 4rem;
+  width:auto;
+  display:block
 }
 
 /* Search Box Base Styling (Desktop) */
@@ -142,8 +146,8 @@ html, body {
 
 /* Hover Effect */
 .action-item:hover {
-  background-color: #007979; /* GALTI REPLACED: 'buttn-color' ki jagah 'background-color' */
-  border-color: #007979;     /* Optional: Border ko bhi same red color kar diya */
+  background-color: #E50914; /* GALTI REPLACED: 'buttn-color' ki jagah 'background-color' */
+  border-color: #E50914;     /* Optional: Border ko bhi same red color kar diya */
   color: #ffffff;
 }
 
@@ -161,7 +165,7 @@ html, body {
    ========================================== */
 .bottom-nav {
   padding: 12px 30px;
-  background-color: #0B0F17; /* Background color dena zaroori hai taaki peeche ka text na dikhe */
+  background-color: #0b0b0f; /* Background color dena zaroori hai taaki peeche ka text na dikhe */
   position: sticky;
   top: 0;
   z-index: 1000;             /* Taaki baaki content iske neeche se guzre */
@@ -260,7 +264,7 @@ html, body {
   bottom: 0;
   left: 0;
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: #E50914;
   
   /* Smooth Directional Animation Magic */
   transform: scaleX(0);
@@ -313,7 +317,7 @@ html, body {
 
 /* Dark Background */
 body {
-  background-color: #0B0F17;
+  background-color: #0b0b0f;
   color: #ffffff;
 }
 
@@ -334,14 +338,91 @@ body {
    3. MAIN HEADLINE STYLING
    ========================================== */
 .hero-title {
-  font-size: 32px;
+  font-size: 30px;
   font-weight: bold;
   color: #ffffff;
-  max-width: 900px;       /* Text ko zyadatar screen par failne se rokne ke liye */
+  max-width: 700px;       /* Text ko zyadatar screen par failne se rokne ke liye */
   line-height: 1.4;
   margin-bottom: 20px;    /* Headline aur Sub-text ke beech gap */
 }
+.sub-heading {
+  font-size: 30px;
+  font-weight:  4rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.note-line{
+  font-size:1.5rem;
+  font-family: 'segoe UI ', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
 
+.tech-stack {
+width: 100%;
+    border-top: 1px solid #1a2332;    /* Upar wali line */
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 70px; 
+    padding: 20px 0;
+    font-size: 6rem;
+   scroll-snap-type: mandatory;
+}
+.tech-stack .fa-html5 {
+    color: #E34F26;
+}
+
+/* CSS Icon - Blue */
+.tech-stack .fa-css3-alt {
+    color: #1572B6;
+}
+
+/* JS Icon - Yellow */
+.tech-stack .fa-js {
+    color: #F7DF1E;
+}
+
+/* Node.js Icon - Green */
+.tech-stack .fa-node-js {
+    color: #339933;
+}
+/* 1. Parent Container - Screen boundaries ko lock karne ke liye */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 1px solid #1a2332;
+    padding: 25px 0;
+    box-sizing: border-box;
+}
+
+/* 2. Moving Track - Continuous animation ke liye */
+.marquee-track {
+    display: flex;
+    gap: 80px;
+    width: max-content;
+    animation: slideAnimation 12s linear infinite;
+}
+
+/* 3. Individual Icon Styling & Sizing */
+.marquee-track i {
+    font-size: 5rem;
+    flex-shrink: 0;
+}
+
+/* 4. Official Brand Colors */
+.html-icon { color: #E34F26; }
+.css-icon { color: #1572B6; }
+.js-icon { color: #F7DF1E; }
+.node-icon { color: #339933; }
+
+/* 5. Smooth Infinite Loop Keyframes */
+@keyframes slideAnimation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
 /* ==========================================
    4. SUB-TEXT STYLING
    ========================================== */

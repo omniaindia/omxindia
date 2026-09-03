@@ -8,7 +8,8 @@ var supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // 2. Payment Gateway Links (Passing file parameters to redirect/success page)
 const paymentLinks = {
   'html_notes': 'https://razorpay.me/@omniaindia?file=html',
-  'css_notes': 'https://razorpay.me/@omniaindia?file=css'
+  'css_notes': 'https://razorpay.me/@omniaindia?file=css',
+  'js_notes': 'https://razorpay.me/@omniaindia?file=js'
 };
 
 // 3. Buy Now Function

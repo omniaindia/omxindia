@@ -23,7 +23,7 @@ html, body {
    ========================================== */
 .header-container {
   width: 100%;
-  background-color: #0B0F17;
+  background-color: #0b0b0f;
   border-bottom: 1px solid #333333;
   
   /* Yeh raha aapka sticky fix */
@@ -42,21 +42,20 @@ html, body {
 }
 
 /* Logo Styling */
-.logo a {
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 32px;
-  text-decoration: none;
-  letter-spacing: 1px;
+.nav-brand {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  top:0;
+  left:0;
+  z-index: 1000;
 }
-.logo sub {
-  display: block;
-  font-size: 13px;
-  font-weight: bold;
-  color: #cacaca;
-  margin-left: 2px;
+.logo-img{
+  height: 4rem;
+  width:auto;
+  display:block
 }
-
 
 
 /* Top Right Actions (Store & Login Container) */
@@ -140,7 +139,7 @@ html, body {
   bottom: 0;
   left: 0;
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: #E50914;
   
   /* Smooth Directional Animation Magic */
   transform: scaleX(0);
@@ -207,7 +206,7 @@ html, body {
   bottom: 0;
   left: 0;
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: #E50914;
   
   /* Smooth Directional Animation Magic */
   transform: scaleX(0);
